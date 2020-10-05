@@ -12,29 +12,43 @@ public class BinarySearchMain {
         int searchedNumber;
         long searchTimeSequential, searchTimeBinary;
         int randomLimiter = 101;
-        int[] numbers = new int[100];
-        for (int i = 0; i < numbers.length; i++){
 
-            numbers[i] = number.nextInt(randomLimiter);
-        }
 
-        Arrays.sort(numbers);
+
         //Ausgabe Array-Zahlen:
         //for (int i = 0; i < numbers.length; i++){System.out.println(numbers[i] + "\n");}
 
-        System.out.print("What number are u looking for?: ");
-        searchedNumber = reader.nextInt();
+        System.out.print("Array-Length?: ");
+        int range = reader.nextInt();
+        int[] numbers = new int[range];
+
+        for (int i = 0; i < numbers.length; i++){
+
+            numbers[i] = i;
+        }
+
+        Arrays.sort(numbers);
+        Random random = new Random();
+        searchedNumber = random.nextInt(range);
+
+        System.out.println("Search Number: " + searchedNumber);
 
         searchTimeSequential = System.currentTimeMillis();
         System.out.println("\nSequentialSearch:");
         System.out.println("The number was found: " + sequentialSearch(numbers, searchedNumber));
-        System.out.println("Search time was: " + (System.currentTimeMillis() - searchTimeSequential) + "ms");
+        int timesearchedS =  (int) (System.currentTimeMillis() - searchTimeSequential);
+        System.out.println("Search time was: " + (timesearchedS) + "ms");
+
 
         searchTimeBinary = System.currentTimeMillis();
         System.out.println("\nBinary Search:");
         System.out.println("The number was found: " + binarySearch(numbers,searchedNumber));
-        System.out.println("Search time was: " + (System.currentTimeMillis() - searchTimeBinary) + "ms");
+        int timesearchedB = (int) (System.currentTimeMillis() - searchTimeBinary);
+        System.out.println("Search time was: " + (timesearchedB) + "ms");
 
+        if(timesearchedS != 0) {
+            System.out.println((timesearchedS / timesearchedB) * 100 + "%");
+        }
 
     }
     public static boolean binarySearch(int[] numbers, int searchedNumber){
