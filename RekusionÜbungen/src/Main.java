@@ -3,10 +3,12 @@ public class Main {
         Potenzfunktion p = new Potenzfunktion();
         Summenformel s = new Summenformel();
         FibonacciZahl f = new FibonacciZahl();
+        FiboEndRekursion fe = new FiboEndRekursion();
 
         p.Run();
         s.Run();
         f.Run();
+        fe.Run();
 
     }
 }
