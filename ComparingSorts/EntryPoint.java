@@ -15,10 +15,9 @@ public class EntryPoint {
         int tempMoveStable = 0, tempCompareStable = 0;
 
         for(int i = 0; i < 100; i++){
-            int intArray[] = m.createArray();
-            m.bubbleSort(intArray);
-            m.selectionSort(intArray);
-            m.stableSelectionSort(m.createArray1());
+            m.bubbleSort(m.createArray());
+            m.selectionSort(m.createArray());
+            m.stableSelectionSort(m.createArray());
 
         }
         sortArrayList(Methods.listCountc);

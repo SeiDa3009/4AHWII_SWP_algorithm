@@ -26,14 +26,6 @@ public class Methods {
         }
         return intArray;
     }
-    public int[] createArray1() {
-        int intArray[] = new int[1000];
-        Random random = new Random();
-        for (int i = 0; i < intArray.length; i++) {
-            intArray[i] = random.nextInt(100000);
-        }
-        return intArray;
-    }
 
     public void bubbleSort(int[] array) {
         int n;
@@ -74,14 +66,16 @@ public class Methods {
             }
             //Verschieben mit dem erst-möglichen Element
             int temp = array[min];
+            if(array[min]!=array[i]){
+                countMove++;
+                tempm++;
+            }
             array[min] = array[i];
             array[i] = temp;
-            countMove++;
-            tempm++;
         }
         listCountCompare.add(tempc);
         listCountMove.add(tempm);
-//        System.out.println("Anzahl an Verschiebungen: " + countMove);
+//        System.out.println("Anzahl an Verschiebungen: " + tempm);
 //        System.out.println("Anzahl an Vergleichungen: " + countCompare);
     }
 
