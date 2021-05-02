@@ -16,7 +16,6 @@ public class EntryPoint {
             Sorter.selectionSort(Methods.copyArray(array));
             Sorter.stableSelectionSort(Methods.copyArray(array));
             Sorter.insertionSort(Methods.copyArray(array));
-            Sorter.quickSort(Methods.copyArray(array),0,array.length-1);
         }
         System.out.println("Bubblesort: ");
         Methods.output(Sorter.countCompareBubble, Sorter.countMoveBubble, Sorter.countTimeBubble);
@@ -26,8 +25,6 @@ public class EntryPoint {
         Methods.output(Sorter.countCompareStable, Sorter.countMoveStable, Sorter.countTimeStable);
         System.out.println("Insertionsort: ");
         Methods.output(Sorter.countCompareInsertion, Sorter.countMoveInsertion, Sorter.countTimeInsertion);
-        System.out.println("Quicksort: ");
-        Methods.output(Sorter.countCompareQuicksort, Sorter.countMoveQuicksort, Sorter.countTimeQuicksort);
 
     }
 }
