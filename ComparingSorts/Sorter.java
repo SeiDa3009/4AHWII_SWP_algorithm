@@ -15,6 +15,10 @@ public class Sorter {
     public static ArrayList<Long> countCompareInsertion = new ArrayList<>();
     public static ArrayList<Long> countMoveInsertion = new ArrayList<>();
     public static ArrayList<Long> countTimeInsertion = new ArrayList<>();
+    public static ArrayList<Long> countCompareQuicksort = new ArrayList<>();
+    public static ArrayList<Long> countMoveQuicksort = new ArrayList<>();
+    public static ArrayList<Long> countCompareQuicksortfinal = new ArrayList<>();
+    public static ArrayList<Long> countMoveQuicksortfinal = new ArrayList<>();
 
     public static void bubbleSort(int[] array) {
         int n;
@@ -63,6 +67,7 @@ public class Sorter {
             array[i] = temp;
         }
         countCompareSelection.add(tempc);
+
         countMoveSelection.add(tempm);
         countTimeSelection.add(System.nanoTime()-tempt);
     }
@@ -115,6 +120,43 @@ public class Sorter {
         countCompareInsertion.add(tempc);
         countMoveInsertion.add(tempm);
         countTimeInsertion.add(System.nanoTime()-tempt);
+    }
+
+    //Quicksort
+    public static void quickSort(int[] array, int low, int high){
+        long tempc = 0;
+        long tempm = 0;
+        if(low < high){
+            int index = partition(array,low,high);
+            quickSort(array,low,index-1);
+            quickSort(array,index + 1,high);
+        }
+
+    }
+    private static int partition(int[] array, int low, int high){
+        long tempc = 0;
+        long tempm = 0;
+        int pivot = array[high];
+        int i = (low - 1);
+        for(int j = low; j <= high - 1; j++){
+            tempc++;
+            if(array[j] < pivot){
+                i++;
+                swap(array, i, j);
+                tempm++;
+            }
+        }
+        swap(array,i+1, high);
+        tempm++;
+        countCompareQuicksort.add(tempc);
+        countMoveQuicksort.add(tempm);
+        return (i+1);
+
+    }
+    private static void swap(int[] array, int i, int j){
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
 
